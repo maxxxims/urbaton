@@ -9,6 +9,8 @@ class ParkSchema(BaseModel):
     photo_url: str
     adress: str
     priority: int
+    description: str
+    signature: str
     price: int
     is_avaible: bool
     is_car: bool
