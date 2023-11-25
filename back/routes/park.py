@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 from schemas import Location, ParkSchema, ResponseNearestPark
 
 
-park = APIRouter(prefix='/park')
+park = APIRouter(prefix='/park', tags=['park'])
 
 
 @park.get('/get_all')

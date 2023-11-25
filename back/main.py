@@ -2,9 +2,10 @@ from fastapi import FastAPI
 import uvicorn
 from dependencies import SessionLocal, engine, Base, CONFIG
 from fastapi.responses import RedirectResponse
-from routes.park import park
-import pandas as pd
+import routes.park
+import routes
 import database.park
+import pandas as pd
 
 
 def get_application() -> FastAPI:
@@ -24,7 +25,8 @@ def get_application() -> FastAPI:
     database.park.add_parks(SessionLocal(), df_parking.to_dict('records'))
 
     app = FastAPI()
-    app.include_router(park)
+    app.include_router(routes.park)
+    app.include_router(routes.user)
     return app
 
 app = get_application()
