@@ -28,7 +28,8 @@ def get_nearest_parks(db: Session, location: schemas.Location):
         )
         if location.skip >= len(df_parks):
             return False
-
+        
+        df_parks = df_parks[df_parks['is_available'] == True]
         df_parks = df_parks.sort_values(by='distance_meters', ascending=True)
         df_parks = df_parks[location.skip : min(len(df_parks), location.skip + location.limit)]
         

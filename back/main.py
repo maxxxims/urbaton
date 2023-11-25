@@ -2,6 +2,7 @@ from fastapi import FastAPI
 import uvicorn
 from dependencies import SessionLocal, engine, Base, CONFIG
 from fastapi.responses import RedirectResponse
+from models import Park
 import routes.park
 import routes
 import database.park
@@ -9,7 +10,11 @@ import pandas as pd
 
 
 def get_application() -> FastAPI:
-    Base.metadata.drop_all(bind=engine)
+    try:
+        Park.__table__.drop(bind=engine)
+    except:
+        Base.metadata.drop_all(bind=engine)
+    
     Base.metadata.create_all(bind=engine)
 
     df_parking = pd.read_excel(CONFIG.get('PATH_TO_PARKS'))
@@ -20,8 +25,6 @@ def get_application() -> FastAPI:
         lambda row: row['description'].replace('\n', '').split('</br>')[-1], axis=1
     )
     df_parking['photo_url'] = 'https://www.mostribuna.ru/images/718.jpg'
-    # print(df_parking)
-    # print(df_parking['description'][0].replace('\n', ''))
     database.park.add_parks(SessionLocal(), df_parking.to_dict('records'))
 
     app = FastAPI()

@@ -12,7 +12,7 @@ class ParkSchema(BaseModel):
     description: str
     signature: str
     price: int
-    is_avaible: bool
+    is_available: bool
     is_car: bool
 
     class Config:

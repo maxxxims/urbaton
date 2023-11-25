@@ -20,6 +20,6 @@ class Park(Base):
     priority = Column(Integer, default=0)
     price = Column(Integer, default=999)
 
-    is_avaible = Column(Boolean, default=True)
+    is_available = Column(Boolean, default=True)
     is_car = Column(Boolean, default=False)
 
