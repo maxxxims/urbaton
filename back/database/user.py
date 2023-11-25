@@ -33,3 +33,16 @@ def add_user(db: Session, user: schemas.User):
     uuid = db.query(models.User.uuid).where(models.User.phone_number == user.phone_number).first()
     return uuid
 
+
+def get_balance(db: Session, uuid: UUID):
+    db_user = db.query(models.User).filter_by(uuid=str(uuid)).one()
+    return db_user.balance
+
+
+def update_balance(db: Session, uuid: UUID, balance: float) -> float:
+    db_user = db.query(models.User).filter_by(uuid=str(uuid)).one()
+    db_user.balance += balance
+    new_balance = db_user.balance
+    db.commit()
+    db.refresh(db_user)
+    return new_balance
