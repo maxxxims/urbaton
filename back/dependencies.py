@@ -20,7 +20,7 @@ def load_env():
             'HOST': os.getenv('BACKEND_HOST'),
             'PORT': int(os.getenv('BACKEND_PORT')),
             'SQLALCHEMY_DATABASE_URL': os.getenv('SQLALCHEMY_DATABASE_URL'),
-            'PATH_TO_PARKS': os.getenv('PATH_TO_PARKS')
+            'PATH_TO_PARKS': os.getenv('back/parks.xlsx')
         }
     else:
         raise Exception('Failed to load .env file')

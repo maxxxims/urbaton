@@ -1,21 +1,47 @@
-// CreateAccount.js
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, Navigate } from 'react-router-dom';
 import Footer from '../templates/footer';
 import '../../css/createAccount.css';
 
 const CreateAccount = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [surname, setSurname] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [emailError, setEmailError] = useState('');
   const [loginError, setLoginError] = useState('');
   const [passwordError, setPasswordError] = useState('');
 
-  const handleAccountCreating = () => {
+  const handleAccountCreating = async () => {
     if (validateForm()) {
-      // Process account creation logic here
-      alert(`Ваша учетная запись успешно создана: Эл. почта: ${email} \n Логин: ${login}`);
+      const userData = {
+        name,
+        surname,
+        email,
+        phone_number: phoneNumber,
+        status: 'active',  // Assuming status is a constant value for registration
+        hashed_password: password,
+      };
+
+      const response = await fetch('http://localhost:8000/user/reg_user', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(userData);
+        alert(`Account created successfully: UUID: ${data.uuid}`);
+        navigate('/login');
+      } else {
+        alert('Failed to create an account');
+      }
     }
   };
 
@@ -49,6 +75,7 @@ const CreateAccount = () => {
       setPasswordError('');
     }
 
+
     return isValid;
   };
 
@@ -60,6 +87,34 @@ const CreateAccount = () => {
           <Link to="/login">
             <div className="back-arrow">← Назад</div>
           </Link>
+          {/* New fields for name, surname, and phone number */}
+          <label>
+            Введите ваше имя:
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Введите имя"
+            />
+          </label>
+          <label>
+            Введите вашу фамилию:
+            <input
+              type="text"
+              value={surname}
+              onChange={(e) => setSurname(e.target.value)}
+              placeholder="Введите фамилию"
+            />
+          </label>
+          <label>
+            Введите номер телефона:
+            <input
+              type="tel"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              placeholder="Введите номер телефона"
+            />
+          </label>
           <label>
             Введите адрес электронной почты:
             <input

@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from dependencies import SessionLocal, engine, Base, CONFIG
 from fastapi.responses import RedirectResponse
@@ -7,7 +8,6 @@ import routes.park
 import routes
 import database.park
 import pandas as pd
-
 
 def get_application() -> FastAPI:
     try:
@@ -28,12 +28,26 @@ def get_application() -> FastAPI:
     database.park.add_parks(SessionLocal(), df_parking.to_dict('records'))
 
     app = FastAPI()
+
+    # Enable CORS
+    origins = [
+        "http://localhost",
+        "http://localhost:3000",  # Add the URL of your frontend
+    ]
+
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=origins,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
     app.include_router(routes.park)
     app.include_router(routes.user)
     return app
 
 app = get_application()
-
 
 @app.get("/", deprecated=True)
 async def root():
