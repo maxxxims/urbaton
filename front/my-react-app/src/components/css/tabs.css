@@ -1,0 +1,94 @@
+/* Обновленные стили для кнопок вкладок */
+.tabs-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Центрирование элементов по вертикали */
+  margin-top: 10px;
+  background-color: #f5f5f5; /* Добавим фон для кнопок */
+  padding: 10px; /* Увеличим отступ для кнопок */
+  border-radius: 10px; /* Закруглим границы */
+}
+
+/* Обновленные стили для всех кнопок */
+.tabs-buttons button {
+  background-color: #5cb85c;
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Добавим анимацию для фона при наведении */
+}
+
+.tabs-buttons button:hover {
+  transform: translateY(-5px); /* Приподнимаем кнопку при наведении */
+  background-color: #4cae4c; /* Изменяем цвет фона при наведении */
+}
+
+/* Обновленные стили для кнопки "Личный кабинет" */
+.tabs-buttons button.user-dashboard {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Перемещение кнопки "Личный кабинет" вправо */
+  margin-left: 2px;
+}
+
+.tabs-buttons button.user-dashboard img {
+  margin-right: 8px;
+  width: 15px; /* Увеличим размер иконки */
+  height: auto;
+}
+
+/* Обновленные стили для контейнера вкладок */
+.tabs-container {
+  max-width: 800px; /* Увеличим максимальную ширину контейнера */
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+
+/* Дополнительные стили для заголовка */
+.tabs-container h1 {
+  color: #333;
+  margin: 0; /* Уберем отступы для заголовка */
+}
+
+/* Обновленные стили для footer */
+.footer {
+  background-color: #4caf50;
+  padding: 10px;
+  color: white;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer.contact-info {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer.contact-item {
+  text-align: center;
+}
+
+.footer.contact-item img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+a {
+  color: white; /* Цвет текста для обычного состояния */
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(255, 255, 255);
+  text-decoration: underline;
+  transition: text-decoration 0.5s ease;
+}

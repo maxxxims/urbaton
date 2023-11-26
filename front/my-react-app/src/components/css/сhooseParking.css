@@ -1,0 +1,77 @@
+/* ChooseParking.css */
+
+.container {
+  display: flex;
+  background-color: #f5f5f5; /* Set the background color for the entire component */
+  border-radius: 2px;
+  margin-top: 10px;
+}
+
+.map-container {
+  flex: 1;
+  margin-right: 20px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.list-container {
+  border-radius: 5px;
+  max-width: 300px;
+  max-height: auto;
+  background-color: #ececec;
+  padding: 20px;
+}
+
+.list-header {
+  font-size: 1.8rem; /* Increased font size for better visibility */
+  margin-bottom: 10px; /* Added margin for separation */
+  margin: 0;
+
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.list-item {
+  margin-bottom: 12px; /* Increased margin for better spacing */
+  border: 1px solid #ddd; /* Adjusted border color */
+  padding: 12px; /* Increased padding for better readability */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.list-item:hover {
+  background-color: #e0f7fa; /* Color change on hover */
+}
+
+.list-item.selected {
+  background-color: #c8e6c9; /* Color for selected item */
+}
+
+.list-item.hovered {
+  background-color: #e8f5e9; /* Color for hovered item */
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffffb6;
+  padding: 20px;
+  border-radius: 10px;
+}
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+} 
+
+input {
+  min-width: 300px;
+  max-width: auto;
+}

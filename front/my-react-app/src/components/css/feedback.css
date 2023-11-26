@@ -1,0 +1,50 @@
+.feedback-form {
+    text-align: center;
+  }
+  
+  .feedback-description {
+    background-color: #d4edda;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .feedback-form-inner {
+    max-width: 900px; /* Задайте желаемую максимальную ширину */
+    margin: 0 auto;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"]
+  {
+    text-align:left;
+    width: 50%; /* Занимает 100% доступной ширины */
+    padding: 8px; /* Подходящий внутренний отступ для удобства ввода */
+    box-sizing: border-box; /* Учитывает внутренние отступы и границы в общей ширине элемента */
+    margin-bottom: 10px; 
+  }
+  textarea {
+    width: 100%; /* Занимает 100% доступной ширины */
+    padding: 8px; /* Подходящий внутренний отступ для удобства ввода */
+    box-sizing: border-box; /* Учитывает внутренние отступы и границы в общей ширине элемента */
+    margin-bottom: 10px;
+    background-color: #f2f2f2; /* Светло-серый цвет для фона */
+    cursor: not-allowed; /* Запрет изменения размера курсора */
+    height: 100px; /* Задайте желаемую высоту */
+    resize: none;
+  }
+
+  
+  .error-message {
+    color: red;
+  }
+  
+  .success-message {
+    color: green;
+  }
+  
